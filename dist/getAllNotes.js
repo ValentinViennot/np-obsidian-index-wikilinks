@@ -10,7 +10,10 @@ const updateNotesIndexWithBacklinks = async (index) => {
         const noteOutLinks = outLinks[i];
         for (const noteOutLink of noteOutLinks)
             if (!Array.isArray(index[noteOutLink]))
-                index[noteOutLink].referenced_by.push(noteId);
+                if (index[noteOutLink] === undefined)
+                    console.error(`/!\\ Broken link: ${noteId}-->${noteOutLink}`);
+                else
+                    index[noteOutLink].referenced_by.push(noteId);
     }
     return index;
 };
