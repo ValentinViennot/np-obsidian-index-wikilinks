@@ -1,0 +1,15 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-18-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+	},
+	"postCreateCommand": "sudo chown node node_modules && npm install",
+	"mounts": [
+		"source=${localWorkspaceFolderBasename}-npm,target=${containerWorkspaceFolder}/node_modules/,type=volume"
+		//, "source=/local/path/to/notes,target=${containerWorkspaceFolder}/content/garden,type=bind,consistency=cached"
+	]
+}
