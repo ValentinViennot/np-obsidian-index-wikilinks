@@ -1,6 +1,6 @@
 import * as fs from "fs";
+import { WIKILINKSregex } from "./wikilinkRegex.js";
 const encoding = "utf-8";
-const WIKILINKSregex = /\[\[([^\]]*)\]\]/g;
 export default async function getNoteLinks(note) {
     const content = await fs.promises.readFile(note.path, { encoding });
     const links = [];
